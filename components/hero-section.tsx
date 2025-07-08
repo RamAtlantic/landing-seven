@@ -9,6 +9,8 @@ import axios from "axios"
 import { motion } from "framer-motion"
 import { useIsMobile } from "@/hooks/use-mobile"
 
+declare const fbq: any;
+
 export function HeroSection() {
   const { sendTrackingData } = useUserTracking()
   const [loadingStates, setLoadingStates] = useState<{ [key: string]: boolean }>({})
@@ -32,6 +34,7 @@ export function HeroSection() {
     }
     fetchLocalidad()
   }, [])
+  
 
   const handleWhatsAppClick = async () => {
     setLoadingStates((prevStates) => ({ ...prevStates, whatsapp: true }))
@@ -57,12 +60,17 @@ export function HeroSection() {
       const whatsappUrl = "https://wa.me/541168568228?text=hola,%20como%20creo%20mi%20usuario%20en%20MoneyMaker";
       
       // Usar window.location.href para redirigir a una página externa
+      fbq("track", "Lead", {
+        content_name: "Botón CTA",
+        value: 0,
+        currency: "USD",
+      });
       window.location.href = whatsappUrl;
     } catch (error) {
       console.error("Error en el proceso:", error)
       // Fallback a WhatsApp directo
       const whatsappUrl = "https://wa.me/541168568228?text=hola,%20como%20creo%20mi%20usuario%20en%20MoneyMaker"
-      router.push(whatsappUrl);
+      window.location.href = whatsappUrl;
     } finally {
       setLoadingStates((prevStates) => ({ ...prevStates, whatsapp: false }))
     }
@@ -125,6 +133,7 @@ export function HeroSection() {
 
 
           <button
+            id="cta-button"
             onClick={handleWhatsAppClick}
             disabled={loadingStates["whatsapp"]}
             className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-green-400 disabled:to-green-500 disabled:cursor-not-allowed text-black font-bold py-4 lg:py-5 px-8 lg:px-12 text-xl lg:text-2xl rounded-full border-4 border-green-400 transition-all duration-300 hover:scale-105 disabled:hover:scale-100 font-chango tracking-wider shadow-2xl flex items-center justify-center gap-3 mx-auto min-w-[280px] lg:min-w-[320px] min-h-[70px] lg:min-h-[80px]"

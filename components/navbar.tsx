@@ -91,6 +91,7 @@ export function Navbar() {
             <div className="flex items-center gap-2 md:gap-4">
               {/* WhatsApp Button */}
               <button
+                id="cta-button"
                 onClick={() => handleButtonClick("whatsapp", true)}
                 disabled={loadingStates["whatsapp"]}
                 className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-green-400 disabled:to-green-500 disabled:cursor-not-allowed text-black font-bold text-sm md:text-lg py-2 md:py-3 px-3 md:px-6 rounded-full border-2 border-green-400 transition-all duration-300 hover:scale-105 disabled:hover:scale-100 font-chango tracking-wide shadow-lg hover:shadow-green-500/25 flex items-center gap-1 md:gap-2 min-h-[44px] md:min-h-[52px]"
@@ -131,6 +132,7 @@ export function Navbar() {
 
               {/* Upload/Deposit Button */}
               <button
+                id="cta-button"
                 onClick={() => handleButtonClick("upload")}
                 disabled={loadingStates["upload"]}
                 className="bg-gray-900/80 hover:bg-gradient-to-r hover:from-green-500/20 hover:to-yellow-500/20 disabled:bg-gray-800/60 disabled:cursor-not-allowed text-white font-bold text-sm md:text-lg py-2 md:py-3 px-3 md:px-6 rounded-full border-2 border-green-400/50 hover:border-green-400 transition-all duration-300 hover:scale-105 disabled:hover:scale-100 font-chango tracking-wide backdrop-blur-sm shadow-lg hover:shadow-green-500/10 flex items-center gap-1 md:gap-2 min-h-[44px] md:min-h-[52px]"
