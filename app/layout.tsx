@@ -191,7 +191,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <TrackingProvider>
             {children}
-            <noscript>
+            
+          </TrackingProvider>
+        </ThemeProvider>
+        <noscript>
               <img
                 height="1"
                 width="1"
@@ -199,8 +202,6 @@ export default function RootLayout({
                 src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_PIXEL_ID}&ev=PageView&noscript=1`}
               />
             </noscript>
-          </TrackingProvider>
-        </ThemeProvider>
       </body>
     </html>
   );
